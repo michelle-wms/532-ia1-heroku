@@ -16,7 +16,7 @@ app = Dash(__name__,  external_stylesheets=['https://codepen.io/chriddyp/pen/bWL
 server = app.server
 
 
-col_list = ['loudness', 'acousticness', 'speechiness', 'instrumentalness', 'tempo']
+col_list = ['danceability', 'loudness', 'acousticness', 'speechiness', 'instrumentalness', 'tempo']
 
 app.layout = html.Div([
     html.Iframe(
@@ -33,7 +33,7 @@ app.layout = html.Div([
 @app.callback(
     Output('scatter', 'srcDoc'),
     Input('xcol-widget', 'value'))
-    
+
 def plot_altair(xcol):
     chart = alt.Chart(df).mark_rect().encode(
         alt.X(xcol, bin=alt.Bin(maxbins=60)),
