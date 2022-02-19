@@ -39,7 +39,7 @@ def plot_altair(xcol):
         alt.X(xcol, bin=alt.Bin(maxbins=60)),
         alt.Y('energy', bin=alt.Bin(maxbins=60)),
         alt.Color('count()'),
-        tooltip='danceability').interactive()
+        tooltip=xcol).interactive()
     return chart.to_html()
 
 if __name__ == '__main__':
