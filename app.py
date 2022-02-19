@@ -5,11 +5,12 @@ from dash import Dash, dcc, html, Input, Output
 from altair_data_server import data_server
 
 # Handle large data sets by not embedding them in the notebook
+alt.data_transformers.disable_max_rows()
 alt.data_transformers.enable('data_server')
 
 # Read in data 
 df = pd.read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv")
-df = df.iloc[:4900, :]
+# df = df.iloc[:4900, :]
 
 # Setup app and layout/frontend
 app = Dash(__name__,  external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
