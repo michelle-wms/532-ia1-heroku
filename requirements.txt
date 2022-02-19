@@ -1,5 +1,4 @@
 pandas
 gunicorn
 altair
-altair_data_server
 dash

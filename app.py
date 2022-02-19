@@ -1,12 +1,11 @@
-from dash import Dash, html
+from dash import Dash, dcc, html, Input, Output
 import pandas as pd
 import altair as alt
-from dash import Dash, dcc, html, Input, Output
-from altair_data_server import data_server
+# from altair_data_server import data_server
 
 # Handle large data sets by not embedding them in the notebook
 alt.data_transformers.disable_max_rows()
-alt.data_transformers.enable('data_server')
+# alt.data_transformers.enable('data_server')
 
 # Read in data 
 df = pd.read_csv("./spotify.csv")
@@ -34,6 +33,7 @@ app.layout = html.Div([
 @app.callback(
     Output('scatter', 'srcDoc'),
     Input('xcol-widget', 'value'))
+    
 def plot_altair(xcol):
     chart = alt.Chart(df).mark_rect().encode(
         alt.X(xcol, bin=alt.Bin(maxbins=60)),
